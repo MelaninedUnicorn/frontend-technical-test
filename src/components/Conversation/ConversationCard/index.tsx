@@ -6,9 +6,10 @@ import ListItemIcon from '../../Common/ListItemIcon'
 import ListItemText from '../../Common/ListItemText'
 import InboxIcon from '@mui/icons-material/Inbox';
 import styles from '../styles/ConversationCard.module.css'
-
-const ConversationCard: FC = ({recipientNickname = 'Jane Doe',...conversation}:Conversation) => {
+import moment from 'moment';
+const ConversationCard: FC = ({recipientNickname = 'Jane Doe',lastMessageTimestamp=0,...conversation}:Conversation) => {
   
+    const friendlyTimestamp = moment(lastMessageTimestamp*1000).format('LLLL');
 
   return (
     <ListItem disablePadding>
@@ -16,7 +17,7 @@ const ConversationCard: FC = ({recipientNickname = 'Jane Doe',...conversation}:C
       <ListItemIcon>
         <InboxIcon />
       </ListItemIcon>
-      <ListItemText primary={recipientNickname} />
+      <ListItemText primary={recipientNickname} secondary={friendlyTimestamp}/>
     </ListItemButton>
   </ListItem>
   )

@@ -14,7 +14,7 @@ const ConversationList: FC = ({ conversations = [] }: ConversationListProps) => 
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <nav aria-label="conversation list">
                 <List>
-                    {conversations.map(({id,...conversation} : Conversation) => <ConversationCard key={id} {...conversation} />)}
+                    {conversations.map(({ id, ...conversation }: Conversation) => <ConversationCard key={id} {...conversation} />)}
                 </List>
             </nav>
         </Box>
