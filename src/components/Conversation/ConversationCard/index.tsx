@@ -7,7 +7,7 @@ import ListItemText from '../../Common/ListItemText'
 import InboxIcon from '@mui/icons-material/Inbox';
 import styles from '../styles/ConversationCard.module.css'
 
-const ConversationCard: FC = ({}:Conversation) => {
+const ConversationCard: FC = ({recipientNickname = 'Jane Doe',...conversation}:Conversation) => {
   
 
   return (
@@ -16,7 +16,7 @@ const ConversationCard: FC = ({}:Conversation) => {
       <ListItemIcon>
         <InboxIcon />
       </ListItemIcon>
-      <ListItemText primary="Inbox" />
+      <ListItemText primary={recipientNickname} />
     </ListItemButton>
   </ListItem>
   )
