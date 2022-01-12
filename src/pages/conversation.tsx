@@ -30,6 +30,14 @@ const Conversation: FC = () => {
       "senderId": 4,
       "senderNickname": "Elodie",
       "lastMessageTimestamp": 1625648667
+    },
+    {
+      "id": 4,
+      "recipientId": 1,
+      "recipientNickname": "Mugisha Kakou",
+      "senderId": 4,
+      "senderNickname": "Kakou",
+      "lastMessageTimestamp": 1642011001
     }
   ]
   return (
