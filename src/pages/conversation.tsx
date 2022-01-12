@@ -1,50 +1,24 @@
 import type { FC } from 'react'
+import useSWR from 'swr';
+import { getConversations } from '../api/conversations';
 import ConversationList from '../components/Conversation/ConversationList';
-import useConversations from '../helpers/useConversations';
+import { fetchAndValidate } from '../lib/fetch';
+
 import styles from '../styles/Conversation.module.css'
 
+
 const Conversation: FC = () => {
-  const { conversations } = useConversations(1);
-  console.log(conversations);
-  const defaultData = [
-    {
-      "id": 1,
-      "recipientId": 2,
-      "recipientNickname": "Jeremie",
-      "senderId": 1,
-      "senderNickname": "Thibaut",
-      "lastMessageTimestamp": 1625637849
-    },
-    {
-      "id": 2,
-      "recipientId": 3,
-      "recipientNickname": "Patrick",
-      "senderId": 1,
-      "senderNickname": "Thibaut",
-      "lastMessageTimestamp": 1620284667
-    },
-    {
-      "id": 3,
-      "recipientId": 1,
-      "recipientNickname": "Thibaut",
-      "senderId": 4,
-      "senderNickname": "Elodie",
-      "lastMessageTimestamp": 1625648667
-    },
-    {
-      "id": 4,
-      "recipientId": 1,
-      "recipientNickname": "Mugisha Kakou",
-      "senderId": 4,
-      "senderNickname": "Kakou",
-      "lastMessageTimestamp": 1642011001
-    }
-  ]
-  return (
-    <div className={styles.container}>
-      <ConversationList conversations={defaultData} />
-    </div>
-  )
+  const { data: conversations } = useSWR(
+    getConversations(1),
+    fetchAndValidate)
+
+  return conversations ? <div className={styles.container}>
+    <ConversationList conversations={conversations} /></div> : <div className={styles.container}>
+    <p>Loading...</p>
+  </div>
+
+
+
 }
 
 export default Conversation

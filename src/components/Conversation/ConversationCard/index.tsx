@@ -22,14 +22,14 @@ const ConversationCard: FC = ({recipientNickname = 'Jane Doe',lastMessageTimesta
     <ListItemButton>
       <ListItemIcon>
       <Avatar
-        sx={{ bgcolor: deepOrange[500] }}
+        sx={{ bgcolor: deepOrange[800] }}
         alt={recipientNickname}
       
       >
         {friendlyAvatar}
       </Avatar>
       </ListItemIcon>
-      <ListItemText primary={recipientNickname} secondary={friendlyTimestamp}/>
+      <ListItemText primary={recipientNickname} secondary={`Dernier message : ${friendlyTimestamp}`}/>
     </ListItemButton>
   </ListItem>
   )
