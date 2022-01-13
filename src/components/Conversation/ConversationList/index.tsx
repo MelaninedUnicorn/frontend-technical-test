@@ -12,6 +12,7 @@ const ConversationList: FC = ({ conversations = [] }: ConversationListProps) => 
 
     return (
         <Box 
+        data-testid="conversation-list"
         sx={{ margin:"auto",width: '100%', maxWidth: '80vw', bgcolor: 'background.paper' }}
         
         >

@@ -7,7 +7,7 @@ import MessageContainer from '../../components/Message/MessageContainer';
 const Message: FC = () => {
   const router = useRouter()
   const { id } = router.query
-
+ 
   return <MessageContainer conversationId={id} />
 
 }

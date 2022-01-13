@@ -5,7 +5,7 @@ describe("App", () => {
   it("should render correctly App", () => {
     render(<App />)
     expect(
-      screen.getByText(/Chose a user to see their inbox/)
+      screen.getByText(/Welcome/)
     ).toBeInTheDocument()
   })
 }) 

@@ -14,7 +14,7 @@ const ConversationContainer: FC = ({userId}:ConversationContainerProps) => {
     getConversations(userId),
     fetchAndValidate)
 
-  return conversations ? <div >
+  return conversations ? <div data-testid="conversation-container">
     <ConversationList conversations={conversations} /></div> : <div className={styles.container}>
     <Spinner />
   </div>

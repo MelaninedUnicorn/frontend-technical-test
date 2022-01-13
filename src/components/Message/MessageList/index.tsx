@@ -1,39 +1,20 @@
 import moment from 'moment'
 import type { FC } from 'react'
 
-import { Message } from '../../../types/message'
+
 
 import Box from '../../Common/Box'
-import List from '../../Common/List'
+
 import MessageCard from '../MessageCard'
 import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
 
 
-const MessageList: FC = ({ messages = [], id = 2, 
-    users = [
-    {
-        "id": 1,
-        "nickname": "Thibaut",
-        "token": "xxxx"
-    },
-    {
-        "id": 2,
-        "nickname": "Jeremie",
-        "token": "xxxx"
-    },
-    {
-        "id": 3,
-        "nickname": "Patrick",
-        "token": "xxxx"
-    },
-    {
-        "id": 4,
-        "nickname": "Elodie",
-        "token": "xxxx"
-    }
-] }: MessageListProps) => {
+
+const MessageList: FC = ({ messages = [],
+    users = [], currentUserId }: MessageListProps) => {
     console.table(messages);
+
     const renderMessages = () => {
 
 
@@ -45,7 +26,7 @@ const MessageList: FC = ({ messages = [], id = 2,
             let previous = messages[i - 1];
             let current = messages[i];
             let next = messages[i + 1];
-            let isMine = current.authorId === id;
+            let isMine = current.authorId === currentUserId;
             const senderInfo = users.find(user => user.id === current.authorId);
 
             let currMoment = moment(current.timestamp * 1000);

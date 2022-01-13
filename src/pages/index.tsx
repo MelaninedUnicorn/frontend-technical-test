@@ -4,24 +4,19 @@ import Image from 'next/image'
 import Logo from '../assets/lbc-logo.webp'
 import styles from '../styles/Home.module.css'
 import Button from '../components/Common/Button'
-import { fetchAndValidate } from '../lib/fetch'
-import { getUsers } from '../api/users'
-import useSWR from 'swr'
-import { User } from '../types/user'
+
+
 import { useRouter } from 'next/router'
 
 const Home: FC = () => {
 
-  const { data: users } = useSWR(
-    getUsers(),
-    fetchAndValidate)
+
 
   const router = useRouter();
   const year = new Date().getFullYear()
 
-  const handleClick = (id) => {
-    console.log(id)
-    router.push(`/conversation/${id}`)
+  const handleClick = (e) => {
+    router.push(`/conversation`)
   }
   return (
     <div className={styles.container}>
@@ -35,11 +30,11 @@ const Home: FC = () => {
 
 
         <p className={styles.description}>
-          Chose a user to see their inbox
+          Welcome
         </p>
 
         <div className={styles.grid}>
-          {users ? users.map((user) => <Button key={user.id}  text={user.nickname} onClick={e => handleClick(user.id)} />) : ''}
+           <Button text={'Go To Inbox'} onClick={ handleClick} />
 
 
         </div>
