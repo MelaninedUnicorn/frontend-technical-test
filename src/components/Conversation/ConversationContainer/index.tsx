@@ -13,7 +13,7 @@ const ConversationContainer: FC = () => {
     getConversations(1),
     fetchAndValidate)
 
-  return conversations ? <div className={styles.container}>
+  return conversations ? <div >
     <ConversationList conversations={conversations} /></div> : <div className={styles.container}>
     <Spinner />
   </div>
