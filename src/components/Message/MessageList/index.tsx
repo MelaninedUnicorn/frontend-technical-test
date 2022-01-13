@@ -100,7 +100,7 @@ const MessageList: FC = ({ messages = [], id = 2,
     }
 
     return (
-        <Box className={styles.messageListContainer} sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <Box className={styles["message-list-container"]} sx={{ width: '100%', bgcolor: 'background.paper' }}>
             {renderMessages()}
         </Box>
     )

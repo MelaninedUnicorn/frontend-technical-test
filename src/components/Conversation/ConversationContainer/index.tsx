@@ -6,11 +6,12 @@ import ConversationList from '../../../components/Conversation/ConversationList'
 import { fetchAndValidate } from '../../../lib/fetch';
 
 import styles from '../../../styles/ConversationContainer.module.css'
+import { ConversationContainerProps } from './ConversationContainer.types';
 
 
-const ConversationContainer: FC = () => {
+const ConversationContainer: FC = ({userId}:ConversationContainerProps) => {
   const { data: conversations } = useSWR(
-    getConversations(1),
+    getConversations(userId),
     fetchAndValidate)
 
   return conversations ? <div >

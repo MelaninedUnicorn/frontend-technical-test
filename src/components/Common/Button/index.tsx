@@ -1,7 +1,7 @@
 import { ButtonProps } from './Button.types'
 import Button from '@mui/material/Button'
-export default function index(props: ButtonProps) {
+export default function index({text, ...props}: ButtonProps) {
     return (
-        <Button {...props} />
+        <Button {...props} > {text} </Button>
     )
 }

@@ -3,10 +3,26 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Logo from '../assets/lbc-logo.webp'
 import styles from '../styles/Home.module.css'
+import Button from '../components/Common/Button'
+import { fetchAndValidate } from '../lib/fetch'
+import { getUsers } from '../api/users'
+import useSWR from 'swr'
+import { User } from '../types/user'
+import { useRouter } from 'next/router'
 
 const Home: FC = () => {
+
+  const { data: users } = useSWR(
+    getUsers(),
+    fetchAndValidate)
+
+  const router = useRouter();
   const year = new Date().getFullYear()
 
+  const handleClick = (id) => {
+    console.log(id)
+    router.push(`/conversation/${id}`)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -16,41 +32,16 @@ const Home: FC = () => {
 
       <main className={styles.main}>
         <Image src={Logo} alt="Leboncoin's logo" width={400} height={125} />
-        <h1 className={styles.title}>
-          Welcome !
-        </h1>
+
 
         <p className={styles.description}>
-          This test is based on a <a href="https://nextjs.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Next.js</a> application.<br />
-          Fork the repository and use the <code className={styles.code}>main</code> branch as your starting point.
-          <br /><br />
-
-          Get started by reading{' '}
-          <code className={styles.code}>README.md</code> and editing <code className={styles.code}>src/pages/index.js</code>
-          <br />
-          Once you are done, send the repository link to your HR contact.
+          Chose a user to see their inbox
         </p>
 
         <div className={styles.grid}>
-          <article className={styles.card}>
-            <h2>Design</h2>
-            <p>Feel free to create any design you want for this exercise. Let your creativity talks !</p>
-          </article>
+          {users ? users.map((user) => <Button key={user.id}  text={user.nickname} onClick={e => handleClick(user.id)} />) : ''}
 
-          <article className={styles.card}>
-            <h2>Libraries</h2>
-            <p>Feel free to use any library you want. Only Next.js / React are required.</p>
-          </article>
 
-          <article className={styles.card}>
-            <h2>API Server</h2>
-            <p>
-              Start the API server on port <code className={styles.code}>3005</code> by running<br /><code className={styles.code}>npm run start-server</code>.<br/>
-              Find the swagger definitions in <code className={styles.code}>docs/api-swagger.yml</code> or <a href="https://leboncoin.tech/frontend-technical-test/" target="_blank" rel="noopener noreferrer">here</a>.
-            </p>
-          </article>
-
-         
         </div>
       </main>
 

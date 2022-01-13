@@ -7,8 +7,7 @@ import ConversationContainer from '../../components/Conversation/ConversationCon
 const Conversation: FC = () => {
   const router = useRouter()
   const { id } = router.query
-console.log(router)
-  return <ConversationContainer id={id} />
+  return <ConversationContainer userId={id} />
 
 }
 
