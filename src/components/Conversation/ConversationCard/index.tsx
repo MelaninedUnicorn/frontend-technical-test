@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import { Conversation } from '../../../types/conversation'
 import ListItem from '../../Common/ListItem'
 import ListItemButton from '../../Common/ListItemButton'
 import ListItemIcon from '../../Common/ListItemIcon'
@@ -8,8 +7,10 @@ import Avatar from '../../Common/Avatar'
 import { getInitials } from '../../../lib/getInitials'
 import { timeago } from '../../../lib/dates';
 import { useRouter } from 'next/router'
+import { getLoggedUserId } from '../../../utils/getLoggedUserId'
+import { ConversationCardProps } from './ConversationCard.types'
 
-const ConversationCard: FC = ({ id , senderId, recipientNickname,senderNickname , lastMessageTimestamp = 0, ...conversation }: Conversation) => {
+const ConversationCard: FC = ({ id , senderId, recipientNickname,senderNickname , lastMessageTimestamp = 0, userId }: ConversationCardProps) => {
   const router = useRouter()
 
  
@@ -18,8 +19,9 @@ const ConversationCard: FC = ({ id , senderId, recipientNickname,senderNickname 
     e.preventDefault()
     router.replace(`${router.basePath}/message/${id}`)
   }
+//  display the name of the other user 
+  const name = userId !== senderId ?  senderNickname :recipientNickname ;
 
-  const name = id !== senderId ?  senderNickname :recipientNickname ;
   return (id ?
     <ListItem data-testid="conversation-card" disablePadding>
       <ListItemButton onClick={handleClick}>
