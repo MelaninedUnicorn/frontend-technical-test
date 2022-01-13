@@ -1,4 +1,11 @@
 import { ButtonProps as MuiButtonProps } from '@mui/material/Button'
-export interface ButtonProps extends MuiButtonProps {
-    text : string
-}
+import * as t from "io-ts"
+
+
+export const ButtonValidator = t.type({
+  
+    text:t.string,
+
+})
+
+export type ButtonProps = t.TypeOf<typeof ButtonValidator>

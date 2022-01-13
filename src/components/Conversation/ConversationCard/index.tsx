@@ -7,10 +7,11 @@ import Avatar from '../../Common/Avatar'
 import { getInitials } from '../../../utils/getInitials'
 import { timeago } from '../../../utils/dates';
 import { useRouter } from 'next/router'
-import { getLoggedUserId } from '../../../utils/getLoggedUserId'
-import { ConversationCardProps } from './ConversationCard.types'
 
-const ConversationCard: FC = ({ id , senderId, recipientNickname,senderNickname , lastMessageTimestamp = 0, userId }: ConversationCardProps) => {
+import { ConversationCardProps } from './ConversationCard.types'
+import { loggedUserId } from '../../../pages/_app'
+
+const ConversationCard: FC<ConversationCardProps> = ({ id , senderId, recipientNickname,senderNickname , lastMessageTimestamp = 0 }) => {
   const router = useRouter()
 
  
@@ -20,7 +21,7 @@ const ConversationCard: FC = ({ id , senderId, recipientNickname,senderNickname 
     router.replace(`${router.basePath}/message/${id}`)
   }
 //  display the name of the other user 
-  const name = userId !== senderId ?  senderNickname :recipientNickname ;
+  const name = loggedUserId === senderId ?  recipientNickname : senderNickname ;
 
   return (id ?
     <ListItem data-testid="conversation-card" disablePadding>

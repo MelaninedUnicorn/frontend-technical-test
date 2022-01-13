@@ -12,9 +12,9 @@ import Input from '../../Common/Input';
 import InputAdornment from '../../Common/InputAdornment';
 import { MessageInputProps } from './MessageInput.types';
 import Send from '@mui/icons-material/Send';
-import {baseUrl} from '../../../api/common'
+import {baseUrl} from '../../../utils/common'
 import { timeago } from '../../../utils/dates';
-const MessageInput: FC = ({ conversationId, userId }: MessageInputProps) => {
+const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
  
   const [message, setMessage] = useState('');
 

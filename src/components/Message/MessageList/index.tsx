@@ -4,16 +4,23 @@ import type { FC } from 'react'
 
 
 import Box from '../../Common/Box'
-
+import Grid from '@mui/material/Grid'
 import MessageCard from '../MessageCard'
 import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
+import useSWR from 'swr'
+import { getUsers } from '../../../utils/users'
+import { fetchAndValidate } from '../../../utils/fetch'
 
 
 
-const MessageList: FC = ({ messages = [],
-    users = [], currentUserId }: MessageListProps) => {
-    console.table(messages);
+const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => {
+    
+    const { data: users } = useSWR(
+        getUsers(),
+        fetchAndValidate)
+
+        console.table(users)
 
     const renderMessages = () => {
 
@@ -27,7 +34,7 @@ const MessageList: FC = ({ messages = [],
             let current = messages[i];
             let next = messages[i + 1];
             let isMine = current.authorId === currentUserId;
-            const senderInfo = users.find(user => user.id === current.authorId);
+            const senderInfo = users ? users.find(user => user.id === current.authorId): {nickname: ""};
 
             let currMoment = moment(current.timestamp * 1000);
             let prevBySameAuthor = false;
@@ -81,9 +88,13 @@ const MessageList: FC = ({ messages = [],
     }
 
     return (
-        <Box className={styles["message-list-container"]} sx={{ width: '100%', bgcolor: 'background.paper' }}>
-            {renderMessages()}
+        <Grid container alignItems={"center"}> 
+            <Grid item sm={12}  md={11} style={{margin:'auto'}} >
+        <Box className={styles["message-list-container"]}  sx={{ bgcolor: 'background.paper' }}>
+            {messages.length > 0 ? renderMessages() : "Pas de messages à afficher"}
         </Box>
+        </Grid>
+        </Grid>
     )
 }
 
