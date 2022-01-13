@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import useSWR from 'swr';
 import { getMessages } from '../api/messages';
+import Spinner from '../components/Common/Spinner';
 import MessageList from '../components/Message/MessageList';
 import { fetchAndValidate } from '../lib/fetch';
 
@@ -14,7 +15,7 @@ const Message: FC = () => {
 console.table(messages)
   return messages ? <div className={styles.container}>
     <MessageList messages={messages} /></div> : <div className={styles.container}>
-    <p>Loading...</p>
+    <Spinner />
   </div>
 
 
