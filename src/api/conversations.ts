@@ -1,6 +1,7 @@
 import * as t from "io-ts"
+import { baseUrl } from "./common"
 
-export const baseUrl = 'http://localhost:3005'
+
 
 
 export const getConversations = (id:number) =>

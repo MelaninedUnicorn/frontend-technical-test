@@ -2,8 +2,7 @@ import type { FC } from 'react'
 import {useState} from 'react'
 import useSWR from 'swr';
 import { getMessages } from '../../../api/messages';
-import Spinner from '../../../components/Common/Spinner';
-import MessageList from '../../../components/Message/MessageList';
+
 import { fetchAndValidate } from '../../../lib/fetch';
 
 import styles from '../../../styles/MessageInput.module.css'
@@ -11,31 +10,43 @@ import FormControl from '../../Common/FormControl';
 import IconButton from '../../Common/IconButton';
 import Input from '../../Common/Input';
 import InputAdornment from '../../Common/InputAdornment';
-import InputLabel from '../../Common/InputLabel';
 import { MessageInputProps } from './MessageInput.types';
 import Send from '@mui/icons-material/Send';
-
+import {baseUrl} from '../../../api/common'
+import { timeago } from '../../../lib/dates';
 const MessageInput: FC = ({ conversationId, userId }: MessageInputProps) => {
  
   const [message, setMessage] = useState('');
-  const { data: messages } = useSWR(
-    getMessages(conversationId),
-    fetchAndValidate)
+
 
   const handleChange = (e) => {
     setMessage(e.target.value)
   }
 
   const handleSendMessage = (e) => {
-    console.log(message)
+    const params = {
+      body: message,
+      timestamp: Math.floor(new Date().getTime() / 1000)
+    };
+
+    
+  const options = {
+      method: 'POST',
+      body: JSON.stringify( params )  
+  };
+    fetch(`${baseUrl}/message/${conversationId}`, options).then( response => response.json() )
+    .then( response => {
+        console.log(response)
+    } );
   }
 
-  return <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+  return <FormControl className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
     <Input
       id="message-input-field"
       type={'text'}
       value={message}
       onChange={handleChange}
+      
       endAdornment={
         <InputAdornment position="end">
           <IconButton
