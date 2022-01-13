@@ -8,7 +8,7 @@ const Message: FC = () => {
   const router = useRouter()
   const { id } = router.query
 
-  return <MessageContainer id={id} />
+  return <MessageContainer conversationId={id} />
 
 }
 

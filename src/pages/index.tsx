@@ -50,15 +50,12 @@ const Home: FC = () => {
             </p>
           </article>
 
-          <article className={styles.card}>
-            <h2>Timing</h2>
-            <p>We recommend 4 hours for this test. You are free to spend more (or less) time, let us know how much time did you spend.</p>
-          </article>
+         
         </div>
       </main>
 
       <footer className={styles.footer}>
-        &copy; leboncoin - {year}
+        &copy; Mugisha Kakou - {year}
       </footer>
     </div>
   )
