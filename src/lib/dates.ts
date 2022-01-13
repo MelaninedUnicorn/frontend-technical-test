@@ -65,12 +65,12 @@ moment.locale('fr', {
 });
 
 
-export const monthDayYear = (timestamp, timezone) => (
+export const monthDayYear = (timestamp,  timezone=null) => (
   !timezone ? moment(timestamp).format('dddd [le] D MMMM, YYYY') :
     moment(timestamp).tz(timezone).format('dddd [le] D MMMM, YYYY')
 );
 
-export const monthDayYearAtTime = (timestamp, timezone) => (
+export const monthDayYearAtTime = (timestamp,  timezone=null) => (
   !timezone ? moment(timestamp).format('dddd [le] D MMMM, YYYY [à] hh:mm a') :
     moment(timestamp).tz(timezone).format('dddd [le] D MMMM, YYYY [à] hh:mm a')
 );
@@ -80,7 +80,7 @@ export const timeago = (timestamp, timezone=null) => (
     moment(timestamp).tz(timezone).fromNow()
 );
 
-export const add = (timestamp, amount, range, timezone) => (
+export const add = (timestamp, amount, range,  timezone=null) => (
   !timezone ? moment(timestamp).add(amount, range).format() :
     moment(timestamp).tz(timezone).add(amount, range).format()
 );

@@ -22,7 +22,7 @@ const ConversationCard: FC = ({recipientNickname = 'Jane Doe',lastMessageTimesta
     <ListItemButton>
       <ListItemIcon>
       <Avatar
-        sx={{ bgcolor: deepOrange[800] }}
+        sx={{ bgcolor: "#EC6E37"}}
         alt={recipientNickname}
       
       >

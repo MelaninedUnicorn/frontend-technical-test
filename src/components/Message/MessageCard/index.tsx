@@ -2,7 +2,9 @@ import type { FC } from 'react'
 import moment from 'moment';
 import styles from '../../../styles/MessageCard.module.css';
 import { MessageCardProps } from './MessageCard.types';
-import { timeago } from '../../../lib/dates';
+import { monthDayYearAtTime,monthDayYear} from '../../../lib/dates';
+
+import classnames from 'classnames';
 
 const MessageCard: FC = ({
     data,
@@ -14,28 +16,28 @@ const MessageCard: FC = ({
 }: MessageCardProps) => {
 
     const { timestamp } = data;
-    const friendlyTimestamp = timeago(timestamp * 1000);
+    const friendlyTimestamp = moment(timestamp*1000).format('LLLL');
+    const friendlyTimestampBuble = monthDayYearAtTime(timestamp * 1000);
     const { nickname, id } = senderInfo;
+    console.log(styles);
+    console.log("starts ",startsSequence);
 
+    
     return (
-        <div className={[
-            'message',
-            `${isMine ? 'mine' : ''}`,
-            `${startsSequence ? 'start' : ''}`,
-            `${endsSequence ? 'end' : ''}`
-        ].join(' ')}>
+        <div className={`${styles["message"]} ${isMine ? styles["mine"] :''} ${startsSequence ? styles["start"] :''} ${endsSequence ? styles["end"] :''}`}>
             {
                 showTimestamp &&
-                <div className="timestamp">
+                <div classNam={`${styles["timestamp"]}`}>
                     {friendlyTimestamp}
                 </div>
             }
-            {startsSequence && !isMine && <div className="user-name" align={'left'} >
+          
+            {startsSequence && !isMine && <div className={`${styles["user-name"]}`} align={'left'} >
                 {nickname}
             </div>}
-            <div className="bubble-container">
+            <div className={`${styles["bubble-container"]}`}>
 
-                <div className="bubble" title={friendlyTimestamp}>
+                <div className={`${styles["bubble"]}`} title={friendlyTimestampBuble}>
                     {data.body}
                 </div>
             </div>

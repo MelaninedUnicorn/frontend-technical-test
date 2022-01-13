@@ -10,7 +10,7 @@ import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
 
 
-const MessageList: FC = ({ messages = [], id = 1, 
+const MessageList: FC = ({ messages = [], id = 2, 
     users = [
     {
         "id": 1,
@@ -45,8 +45,8 @@ const MessageList: FC = ({ messages = [], id = 1,
             let previous = messages[i - 1];
             let current = messages[i];
             let next = messages[i + 1];
-            let isMine = current.id === id;
-            const senderInfo = users.find(user => user.id === current.id);
+            let isMine = current.authorId === id;
+            const senderInfo = users.find(user => user.id === current.authorId);
 
             let currMoment = moment(current.timestamp * 1000);
             let prevBySameAuthor = false;
@@ -59,7 +59,7 @@ const MessageList: FC = ({ messages = [], id = 1,
 
                 let prevMoment = moment(previous.timestamp * 1000);
                 let previousDuration = moment.duration(currMoment.diff(prevMoment));
-                prevBySameAuthor = previous.id === current.id;
+                prevBySameAuthor = previous.id === current.authorId;
 
                 if (prevBySameAuthor && previousDuration.as('hours') < 1) {
                     startsSequence = false;
@@ -73,7 +73,7 @@ const MessageList: FC = ({ messages = [], id = 1,
             if (next) {
                 let nextMoment = moment(next.timestamp * 1000);
                 let nextDuration = moment.duration(nextMoment.diff(currMoment));
-                nextBySameAuthor = next.id === current.id;
+                nextBySameAuthor = next.id === current.authorId;
 
                 if (nextBySameAuthor && nextDuration.as('hours') < 1) {
                     endsSequence = false;
