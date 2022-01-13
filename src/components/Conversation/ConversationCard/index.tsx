@@ -4,22 +4,24 @@ import ListItem from '../../Common/ListItem'
 import ListItemButton from '../../Common/ListItemButton'
 import ListItemIcon from '../../Common/ListItemIcon'
 import ListItemText from '../../Common/ListItemText'
-import InboxIcon from '@mui/icons-material/Inbox';
-import styles from '../styles/ConversationCard.module.css'
-import moment from 'moment';
-import { deepOrange } from '@mui/material/colors';
 import Avatar from '../../Common/Avatar'
 import { getInitials } from '../../../lib/getInitials'
 import { timeago } from '../../../lib/dates';
+import { useRouter } from 'next/router'
 
-const ConversationCard: FC = ({recipientNickname = 'Jane Doe',lastMessageTimestamp=0,...conversation}:Conversation) => {
-  
+const ConversationCard: FC = ({id=0,recipientNickname = 'Jane Doe',lastMessageTimestamp=0,...conversation}:Conversation) => {
+    const router = useRouter()
+    console.log(conversation)
     const friendlyTimestamp = timeago(lastMessageTimestamp*1000);
     const friendlyAvatar = getInitials(recipientNickname);
 
+    const handleClick = (e) => {
+      e.preventDefault()
+      router.replace(`${router.basePath}/message/${id}`)
+    }
   return (
     <ListItem disablePadding>
-    <ListItemButton>
+    <ListItemButton onClick={handleClick}>
       <ListItemIcon>
       <Avatar
         sx={{ bgcolor: "#EC6E37"}}

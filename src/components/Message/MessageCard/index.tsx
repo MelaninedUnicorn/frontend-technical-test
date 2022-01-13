@@ -27,7 +27,7 @@ const MessageCard: FC = ({
         <div className={`${styles["message"]} ${isMine ? styles["mine"] :''} ${startsSequence ? styles["start"] :''} ${endsSequence ? styles["end"] :''}`}>
             {
                 showTimestamp &&
-                <div classNam={`${styles["timestamp"]}`}>
+                <div className={`${styles["timestamp"]}`}>
                     {friendlyTimestamp}
                 </div>
             }
