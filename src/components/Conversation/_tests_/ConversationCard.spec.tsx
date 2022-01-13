@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import { timeago } from "../../../lib/dates"
+import { timeago } from "../../../utils/dates"
 import ConversationCard from "../ConversationCard"
 
 describe("ConversationCard", () => {
