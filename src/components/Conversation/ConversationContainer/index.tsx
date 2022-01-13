@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import { getConversations } from '../../../api/conversations';
 import Spinner from '../../../components/Common/Spinner';
 import ConversationList from '../../../components/Conversation/ConversationList';
-import { fetchAndValidate } from '../../../lib/fetch';
+import { fetchAndValidate } from '../../../utils/fetch';
 
 import styles from '../../../styles/ConversationContainer.module.css'
 import { ConversationContainerProps } from './ConversationContainer.types';

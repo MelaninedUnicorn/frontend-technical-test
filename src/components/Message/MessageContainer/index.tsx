@@ -4,7 +4,7 @@ import { getMessages } from '../../../api/messages';
 import { getUsers } from '../../../api/users';
 import Spinner from '../../../components/Common/Spinner';
 import MessageList from '../../../components/Message/MessageList';
-import { fetchAndValidate } from '../../../lib/fetch';
+import { fetchAndValidate } from '../../../utils/fetch';
 
 import styles from '../../../styles/MessageContainer.module.css'
 import { getLoggedUserId } from '../../../utils/getLoggedUserId';

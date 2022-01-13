@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import moment from 'moment';
 import styles from '../../../styles/MessageCard.module.css';
 import { MessageCardProps } from './MessageCard.types';
-import { monthDayYearAtTime,monthDayYear} from '../../../lib/dates';
+import { monthDayYearAtTime,monthDayYear} from '../../../utils/dates';
 
 import classnames from 'classnames';
 

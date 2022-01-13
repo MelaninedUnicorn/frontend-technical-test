@@ -3,7 +3,7 @@ import {useState} from 'react'
 import useSWR from 'swr';
 import { getMessages } from '../../../api/messages';
 
-import { fetchAndValidate } from '../../../lib/fetch';
+import { fetchAndValidate } from '../../../utils/fetch';
 
 import styles from '../../../styles/MessageInput.module.css'
 import FormControl from '../../Common/FormControl';
@@ -13,7 +13,7 @@ import InputAdornment from '../../Common/InputAdornment';
 import { MessageInputProps } from './MessageInput.types';
 import Send from '@mui/icons-material/Send';
 import {baseUrl} from '../../../api/common'
-import { timeago } from '../../../lib/dates';
+import { timeago } from '../../../utils/dates';
 const MessageInput: FC = ({ conversationId, userId }: MessageInputProps) => {
  
   const [message, setMessage] = useState('');

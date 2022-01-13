@@ -4,8 +4,8 @@ import ListItemButton from '../../Common/ListItemButton'
 import ListItemIcon from '../../Common/ListItemIcon'
 import ListItemText from '../../Common/ListItemText'
 import Avatar from '../../Common/Avatar'
-import { getInitials } from '../../../lib/getInitials'
-import { timeago } from '../../../lib/dates';
+import { getInitials } from '../../../utils/getInitials'
+import { timeago } from '../../../utils/dates';
 import { useRouter } from 'next/router'
 import { getLoggedUserId } from '../../../utils/getLoggedUserId'
 import { ConversationCardProps } from './ConversationCard.types'
