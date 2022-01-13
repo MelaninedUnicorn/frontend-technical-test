@@ -3,6 +3,6 @@ import Avatar from '@mui/material/Avatar'
 
 export default function index(props: AvatarProps) {
     return (
-        <Avatar {...props} />
+        <Avatar data-testid="avatar" {...props} />
     )
 }

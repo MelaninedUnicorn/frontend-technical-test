@@ -1,7 +1,7 @@
-import { ListItemButtonProps } from './ListItemButtonButton.types'
+import { ListItemButtonProps } from './ListItemButton.types'
 import ListItemButton from '@mui/material/ListItemButton'
 export default function index(props: ListItemButtonProps) {
     return (
-        <ListItemButton {...props} />
+        <ListItemButton data-testid="list-item-button" {...props} />
     )
 }
