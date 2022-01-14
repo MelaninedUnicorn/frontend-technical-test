@@ -27,6 +27,9 @@ Desktop list :
 Mobile conversation :
 
 ![](./sketches/msg-mobile.png)
+Mobile empty conversation :
+
+![](./sketches/msg-mobile-no-messages.png)
 
 Desktop conversation :
 

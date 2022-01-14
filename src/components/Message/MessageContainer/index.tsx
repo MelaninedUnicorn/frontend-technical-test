@@ -30,7 +30,7 @@ const MessageContainer: FC<MessageContainerProps> = ({ conversationId }) => {
       <div className={styles["message-container-stacks-container"]}>
         <Stack spacing={2}>
           <MessageList currentUserId={loggedUserId} messages={messages} />
-          
+          <MessageInput conversationId={conversationId} />
         </Stack>
       </div>
     )}
