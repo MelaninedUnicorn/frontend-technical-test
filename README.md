@@ -41,9 +41,13 @@ Mobile conversation :
 
 ![](./sketches/msg-mobile.png)
 
-Mobile empty conversation :
+Mobile conversation when trying to send an empty message:
 
-![](./sketches/msg-mobile-no-messages.png)
+![](./sketches/msg-mobile-error.png)
+
+Desktop empty conversation :
+
+![](./sketches/msg-desktop-no-msg.png)
 
 Desktop conversation :
 
