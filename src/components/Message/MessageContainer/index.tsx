@@ -17,7 +17,7 @@ const MessageContainer: FC<MessageContainerProps> = ({ conversationId }) => {
     getMessages(conversationId),
     fetchAndValidate)
 
-  return (<>
+  return (<div data-testid="message-container">
     {isValidating && !error ? <div className={"container"}><Spinner /></div> : null}
     {error ? <div>{error.message}</div> : null}
     {!messages?.length && !isValidating && !error ? (
@@ -30,7 +30,7 @@ const MessageContainer: FC<MessageContainerProps> = ({ conversationId }) => {
         </Stack>
       </div>
     )}
-  </>)
+  </div>)
 
 
 }

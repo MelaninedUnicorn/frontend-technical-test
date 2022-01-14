@@ -1,6 +1,4 @@
 import {
-    render,
-    RenderOptions,
     screen,
     waitForElementToBeRemoved,
 } from "@testing-library/react"
@@ -8,12 +6,41 @@ import ConversationContainer from "../ConversationContainer"
 import { setupServer } from 'msw/node';
 import { DefaultRequestBody, rest } from 'msw';
 import { customRender } from "../../SwrConfig";
-import { Conversation } from "../../../types/conversation";
 import { baseUrl } from "../../../api/common";
 
 const server = setupServer(
     rest.get<DefaultRequestBody, any>(
-        `${baseUrl}/conversation/1`,
+        `${baseUrl}/users`,
+        (req, res, ctx) => {
+            return res(
+                ctx.delay(100),
+                ctx.json([
+                    {
+                        "id": 1,
+                        "nickname": "Thibaut",
+                        "token": "xxxx"
+                    },
+                    {
+                        "id": 2,
+                        "nickname": "Jeremie",
+                        "token": "xxxx"
+                    },
+                    {
+                        "id": 3,
+                        "nickname": "Patrick",
+                        "token": "xxxx"
+                    },
+                    {
+                        "id": 4,
+                        "nickname": "Elodie",
+                        "token": "xxxx"
+                    }
+                ])
+            );
+        }
+    ),
+    rest.get<DefaultRequestBody, any>(
+        `${baseUrl}/conversations/1`,
         (req, res, ctx) => {
             return res(
                 ctx.delay(100),
@@ -48,7 +75,7 @@ const server = setupServer(
     ),
 
     rest.get<DefaultRequestBody, any>(
-        `${baseUrl}/conversation/2`,
+        `${baseUrl}/conversations/2`,
         (req, res, ctx) => {
             return res(
                 ctx.delay(100),
@@ -67,7 +94,7 @@ const server = setupServer(
     ),
 
     rest.get<DefaultRequestBody, { message: string }>(
-        `${baseUrl}/conversation/undefined`,
+        `${baseUrl}/conversations/undefined`,
         (req, res, ctx) => {
             return res(
                 ctx.delay(100),
@@ -120,7 +147,7 @@ describe("ConversationContainer", () => {
             expect(screen.getByText('Jeremie')).toBeInTheDocument();
 
         });
-     })
+    })
     describe('when user id undefined', () => {
         beforeEach(async () => {
             customRender(<ConversationContainer userId={undefined} />);
@@ -133,7 +160,7 @@ describe("ConversationContainer", () => {
             expect(screen.getByText(/Vous n'avez pas de messages/)).toBeInTheDocument();
 
         });
-     })
+    })
 
 
 
