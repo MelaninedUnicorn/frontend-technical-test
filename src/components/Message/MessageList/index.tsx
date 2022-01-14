@@ -89,7 +89,7 @@ const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => 
 
     return (
   
-        <Box className={styles["message-list-container"]}  sx={{ bgcolor: 'background.paper' }}>
+        <Box data-testid="message-list" className={styles["message-list-container"]}  sx={{ bgcolor: 'background.paper' }}>
             {messages.length > 0 ? renderMessages() : "Pas de messages à afficher"}
         </Box>
       

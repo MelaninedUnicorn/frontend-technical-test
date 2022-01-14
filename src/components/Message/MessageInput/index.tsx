@@ -8,6 +8,7 @@ import InputAdornment from '../../Common/InputAdornment';
 import { MessageInputProps } from './MessageInput.types';
 import Send from '@mui/icons-material/Send';
 import { baseUrl } from '../../../api/common'
+import { sendMessage } from '../../../api/messages';
 
 
 const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
@@ -19,7 +20,7 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
     setMessage(e.target.value)
   }
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     const params = {
       body: message,
       timestamp: Math.floor(new Date().getTime() / 1000)
@@ -30,10 +31,10 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       method: 'POST',
       body: JSON.stringify(params)
     };
-    fetch(`${baseUrl}/message/${conversationId}`, options).then(response => response.json())
-      .then(response => {
-        console.log(response)
-      });
+   
+    const response = await sendMessage(conversationId,options);
+
+    console.log(response)
   }
 
   return <FormControl data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
