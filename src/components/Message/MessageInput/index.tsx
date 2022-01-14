@@ -1,10 +1,5 @@
 import type { FC } from 'react'
-import {useState} from 'react'
-import useSWR from 'swr';
-import { getMessages } from '../../../api/messages';
-
-import { fetchAndValidate } from '../../../api/fetch';
-
+import { useState } from 'react'
 import styles from '../../../styles/MessageInput.module.css'
 import FormControl from '../../Common/FormControl';
 import IconButton from '../../Common/IconButton';
@@ -12,10 +7,11 @@ import Input from '../../Common/Input';
 import InputAdornment from '../../Common/InputAdornment';
 import { MessageInputProps } from './MessageInput.types';
 import Send from '@mui/icons-material/Send';
-import {baseUrl} from '../../../api/common'
-import { timeago } from '../../../utils/dates';
+import { baseUrl } from '../../../api/common'
+
+
 const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
- 
+
   const [message, setMessage] = useState('');
 
 
@@ -29,15 +25,15 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       timestamp: Math.floor(new Date().getTime() / 1000)
     };
 
-    
-  const options = {
+
+    const options = {
       method: 'POST',
-      body: JSON.stringify( params )  
-  };
-    fetch(`${baseUrl}/message/${conversationId}`, options).then( response => response.json() )
-    .then( response => {
+      body: JSON.stringify(params)
+    };
+    fetch(`${baseUrl}/message/${conversationId}`, options).then(response => response.json())
+      .then(response => {
         console.log(response)
-    } );
+      });
   }
 
   return <FormControl className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
@@ -46,7 +42,7 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       type={'text'}
       value={message}
       onChange={handleChange}
-      
+
       endAdornment={
         <InputAdornment position="end">
           <IconButton

@@ -2,11 +2,11 @@ import {
     screen,
     waitForElementToBeRemoved,
 } from "@testing-library/react"
-import MessageContainer from "../../MessageContainer"
+import MessageContainer from "../MessageContainer"
 import { setupServer } from 'msw/node';
 import { DefaultRequestBody, rest } from 'msw';
-import { customRender } from "../../../SwrConfig";
-import { baseUrl } from "../../../../api/common";
+import { customRender } from "../../SwrConfig";
+import { baseUrl } from "../../../api/common";
 
 const server = setupServer(
     rest.get<DefaultRequestBody, any>(

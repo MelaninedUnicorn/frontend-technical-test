@@ -4,7 +4,6 @@ import styles from '../../../styles/MessageCard.module.css';
 import { MessageCardProps } from './MessageCard.types';
 import { monthDayYearAtTime,monthDayYear} from '../../../utils/dates';
 
-import classnames from 'classnames';
 
 const MessageCard: FC<MessageCardProps> = ({
     data,
@@ -23,7 +22,7 @@ const MessageCard: FC<MessageCardProps> = ({
  
     
     return (
-        <div className={`${styles["message"]} ${isMine ? styles["mine"] :''} ${startsSequence ? styles["start"] :''} ${endsSequence ? styles["end"] :''}`}>
+        <div data-testid="message-card" className={`${styles["message"]} ${isMine ? styles["mine"] :''} ${startsSequence ? styles["start"] :''} ${endsSequence ? styles["end"] :''}`}>
             {
                 showTimestamp &&
                 <div className={`${styles["timestamp"]}`}>
