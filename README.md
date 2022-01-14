@@ -1,4 +1,6 @@
-# Implemented Features:
+# Mugisha's messaging interface
+
+### Implemented Features:
 
 - Display a list of all the conversations
 - Allow the user to select a conversation
@@ -16,11 +18,11 @@ Here are a few screenshots of what I've implemented
   
 Mobile list :
 
-![](./sketches/conv-mobile.jpg)
+![](./sketches/conv-mobile.png)
 
 Desktop list :
 
-![](./sketches/conv-desktop.jpg)
+![](./sketches/conv-desktop.png)
 
 Mobile conversation :
 
@@ -36,4 +38,12 @@ Desktop conversation on hover over a message :
 
 </details>
 
-### My thought process
+### My though process
+
+#### Using swr
+
+#### using io-ts
+
+#### Wrapping components from external library
+
+#### Have message and conversation containers
