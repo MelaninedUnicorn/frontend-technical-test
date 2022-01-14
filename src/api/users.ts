@@ -1,5 +1,5 @@
 import * as t from "io-ts"
-import { baseUrl } from "../api/common"
+import { baseUrl } from "./common"
 
 
 

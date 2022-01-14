@@ -9,7 +9,7 @@ import MessageCard from '../MessageCard'
 import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
 import useSWR from 'swr'
-import { getUsers } from '../../../utils/users'
+import { getUsers } from '../../../api/users'
 import { fetchAndValidate } from '../../../api/fetch'
 
 
@@ -20,7 +20,7 @@ const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => 
         getUsers(),
         fetchAndValidate)
 
-        console.table(users)
+
 
     const renderMessages = () => {
 
