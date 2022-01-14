@@ -88,7 +88,7 @@ const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => 
     }
 
     return (
-        <Grid container alignItems={"center"}> 
+        <Grid data-testid={'message-list'} container alignItems={"center"}> 
             <Grid item sm={12}  md={11} style={{margin:'auto'}} >
         <Box className={styles["message-list-container"]}  sx={{ bgcolor: 'background.paper' }}>
             {messages.length > 0 ? renderMessages() : "Pas de messages à afficher"}
