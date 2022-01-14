@@ -8,6 +8,19 @@
   - As a user, you can type and send new messages in this conversation
 
 
+### Some decisions
+
+
+#### Using swr
+Using a data fetching library will avoid a lot of repeated code and remove the need to use a state management library to handle the data.
+
+#### using io-ts
+Allows me to do typescript runtime validation
+
+#### Wrapping components from external library
+I wrapped all the components from the 3rd party library i use so it can easily be modified later on.
+
+
 
 ### Screenshots :
 
@@ -41,23 +54,3 @@ Desktop conversation on hover over a message :
 ![](./sketches/msg-desktop-hover.png)
 
 </details>
-
-### My though process
-
-
-#### Using swr
-Using a data fetching library will avoid a lot of repeated code and remove the need to use a state management library to handle the data.
-
-#### using io-ts
-Allows me to do typescript runtime validation
-
-#### Wrapping components from external library
-I wrapped all the components from the 3rd party library i use so it can easily be modified later on.
-
-#### Displaying the conversation
-I wanted the user to have a clear overview of the conversation so messages send by a user other than the current user display the user's name if it starts a sequence. Messages sent within a certain time frame are closer and displayed differently if they start or end a message sequence
-
-Mobile list :
-
-![](./sketches/conv-mobile.png)
-

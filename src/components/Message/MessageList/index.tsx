@@ -14,13 +14,14 @@ import { fetchAndValidate } from '../../../api/fetch'
 
 
 
-const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => {
+const MessageList: FC<MessageListProps> = ({ messages = [] , currentUserId }) => {
     
     const { data: users } = useSWR(
         getUsers(),
         fetchAndValidate)
 
 
+ 
 
     const renderMessages = () => {
 
