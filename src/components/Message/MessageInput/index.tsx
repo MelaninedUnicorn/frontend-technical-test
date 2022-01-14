@@ -35,11 +35,11 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
     const response = await sendMessage(conversationId,options);
 
     console.log(response)
-  }
+  } 
 
   return <FormControl data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
     <Input
-      id="message-input-field"
+      data-testid="message-input-field"
       type={'text'}
       value={message}
       onChange={handleChange}
@@ -47,6 +47,7 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       endAdornment={
         <InputAdornment position="end">
           <IconButton
+          data-testidd='message-input-send-button'
             aria-label="send-message-button"
             onClick={handleSendMessage}
 
