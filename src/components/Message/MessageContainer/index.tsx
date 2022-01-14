@@ -18,12 +18,12 @@ const MessageContainer: FC<MessageContainerProps> = ({ conversationId }) => {
     fetchAndValidate)
 
   return (<div data-testid="message-container">
-    {isValidating && !error ? <div className={"container"}><Spinner /></div> : null}
+    {isValidating && !error ? <div className={styles.container}><Spinner /></div> : null}
     {error ? <div>{error.message}</div> : null}
     {!messages?.length && !isValidating && !error ? (
       <div>Il n&apos;y a pas encore de message</div>
     ) : (
-      <div className={styles.container}>
+      <div className={"message-container-container"}>
         <Stack spacing={2}>
           <MessageList currentUserId={loggedUserId} messages={messages} />
           <MessageInput conversationId={conversationId} />

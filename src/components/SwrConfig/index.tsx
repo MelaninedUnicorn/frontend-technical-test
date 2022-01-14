@@ -20,7 +20,7 @@ export function SwrConfig({
     swrConfig?: Partial<PublicConfiguration<any, any, Fetcher<any>>> & Provider;
 }) {
     return (
-        <SWRConfig value={{ fetcher: customFetcher, ...swrConfig }}>
+        <SWRConfig  value={{ fetcher: customFetcher, ...swrConfig }}>
             {children}
         </SWRConfig>
     );
@@ -28,7 +28,7 @@ export function SwrConfig({
 
 const AllTheProviders: FC<any> = ({ children }) => {
     return (
-        <SwrConfig swrConfig={{ dedupingInterval: 0, provider: () => new Map() }}>
+        <SwrConfig data-testid={"swr-config"} swrConfig={{ dedupingInterval: 0, provider: () => new Map() }}>
             {children}
         </SwrConfig>
     );

@@ -36,7 +36,7 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       });
   }
 
-  return <FormControl className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
+  return <FormControl data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
     <Input
       id="message-input-field"
       type={'text'}

@@ -12,8 +12,7 @@ const ConversationList: FC<ConversationListProps> = ({ conversations = [] }) => 
 
 
     return (
-        <Grid container alignItems={"center"}>
-        <Grid item sm={12}  md={11} style={{margin:'auto'}} >
+      
         <Box 
         data-testid="conversation-list"
         sx={{  bgcolor: 'background.paper',margin:'auto' }}
@@ -25,8 +24,7 @@ const ConversationList: FC<ConversationListProps> = ({ conversations = [] }) => 
                 </List>
             </nav> : "Pas de messages à afficher"}
             </Box>
-            </Grid>
-            </Grid>
+          
     )
 }
 
