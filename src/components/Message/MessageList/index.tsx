@@ -10,7 +10,7 @@ import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
 import useSWR from 'swr'
 import { getUsers } from '../../../utils/users'
-import { fetchAndValidate } from '../../../utils/fetch'
+import { fetchAndValidate } from '../../../api/fetch'
 
 
 

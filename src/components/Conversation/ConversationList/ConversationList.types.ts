@@ -3,8 +3,7 @@ import * as t from "io-ts"
 
 
 export const ConversationListValidator = t.type({
-    conversations: t.array(ConversationValidator),
-    currentUserId:t.number,
+    conversations: t.array(ConversationValidator)
 
 })
 
