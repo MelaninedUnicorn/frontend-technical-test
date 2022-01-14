@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import useSWR from 'swr';
-import { getMessages } from '../../../utils/messages';
+import { getMessages } from '../../../api/messages';
 import Spinner from '../../../components/Common/Spinner';
 import MessageList from '../../../components/Message/MessageList';
 import { fetchAndValidate } from '../../../api/fetch';

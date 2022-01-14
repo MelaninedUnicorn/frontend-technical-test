@@ -1,6 +1,6 @@
 import { render, screen ,waitFor} from "@testing-library/react"
 
-import { getMessages } from "../../utils/messages"
+import { getMessages } from "../messages"
 
 describe("MessagesApi", () => {
     it("should return a string", () => {

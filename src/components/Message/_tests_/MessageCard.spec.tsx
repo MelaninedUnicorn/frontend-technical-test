@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react"
-import { timeago } from "../../../utils/dates"
 import MessageCard from "../MessageCard"
 
 const loggedUserInfo = {
