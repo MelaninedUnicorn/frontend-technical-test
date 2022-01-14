@@ -1,5 +1,13 @@
-.message-container-container {
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-  }
+.message-container-stack-container {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.message-container-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+

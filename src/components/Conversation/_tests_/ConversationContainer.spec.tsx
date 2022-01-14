@@ -120,7 +120,7 @@ describe("ConversationContainer", () => {
         });
 
         it('renders the conversation container', () => {
-            const element = screen.getByTestId("conversation-container");
+            const element = screen.getByTestId("conversation-conversation-list-container");
             expect(element).toBeInTheDocument();
         });
 
@@ -139,7 +139,7 @@ describe("ConversationContainer", () => {
         });
 
         it('renders the conversation container', () => {
-            const element = screen.getByTestId("conversation-container");
+            const element = screen.getByTestId("conversation-conversation-list-container");
             expect(element).toBeInTheDocument();
         });
 

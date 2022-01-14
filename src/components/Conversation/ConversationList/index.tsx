@@ -11,21 +11,19 @@ import { ConversationListProps } from './ConversationList.types'
 const ConversationList: FC<ConversationListProps> = ({ conversations = [] }) => {
 
 
-    return (
-      
-        <Box 
-        data-testid="conversation-list"
-        sx={{  bgcolor: 'background.paper',margin:'auto' }}
-        
+    return (conversations.length > 0 ?
+        <Box
+            data-testid="conversation-list"
+            sx={{ bgcolor: 'background.paper', margin: 'auto' }}
         >
-            {conversations.length > 0 ? <nav aria-label="conversation list">
+            <nav aria-label="conversation list">
                 <List>
-                    { conversations.map(( conversation : Conversation) => <ConversationCard key={conversation.id} {...conversation} />) }
+                    {conversations.map((conversation: Conversation) => <ConversationCard key={conversation.id} {...conversation} />)}
                 </List>
-            </nav> : "Pas de messages à afficher"}
-            </Box>
+            </nav>
+        </Box> : null)
           
-    )
+    
 }
 
 export default ConversationList

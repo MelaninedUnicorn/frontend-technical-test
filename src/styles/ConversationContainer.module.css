@@ -1,6 +1,13 @@
-.conversation-container-container {
+.conversation-conversation-list-container{
     height: 100%;
     width: 100%;
 
     padding: 10px;
+  }
+
+  .conversation-container-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }

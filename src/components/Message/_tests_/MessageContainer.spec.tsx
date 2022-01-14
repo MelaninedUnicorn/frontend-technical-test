@@ -159,7 +159,7 @@ describe("MessageContainer", () => {
 
 
         it('renders the expected messages', () => {
-            expect(screen.getByText(/Il n'y a pas encore de message/)).toBeInTheDocument();
+            expect(screen.getByText(/Il n'y a pas de messages à afficher/)).toBeInTheDocument();
 
         });
     })

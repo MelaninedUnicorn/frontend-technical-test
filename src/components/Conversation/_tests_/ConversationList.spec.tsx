@@ -4,8 +4,8 @@ import ConversationList from "../ConversationList"
 
 describe("ConversationList",  () => {
     it("should render correctly ConversationList if no conversations are passed as props", () => {
-        render(<ConversationList />)
-        expect(screen.getByTestId('conversation-list')).toBeInTheDocument()
+        render(<ConversationList conversations={undefined}/>)
+        expect(screen.queryByTestId('conversation-list')).toBeNull()
     })
 
     it("should render correctly ConversationList if conversations are passed as props ", async () => {
