@@ -27,6 +27,7 @@ Desktop list :
 Mobile conversation :
 
 ![](./sketches/msg-mobile.png)
+
 Mobile empty conversation :
 
 ![](./sketches/msg-mobile-no-messages.png)
@@ -43,10 +44,20 @@ Desktop conversation on hover over a message :
 
 ### My though process
 
+
 #### Using swr
+Using a data fetching library will avoid a lot of repeated code and remove the need to use a state management library to handle the data.
 
 #### using io-ts
+Allows me to do typescript runtime validation
 
 #### Wrapping components from external library
+I wrapped all the components from the 3rd party library i use so it can easily be modified later on.
 
-#### Have message and conversation containers
+#### Displaying the conversation
+I wanted the user to have a clear overview of the conversation so messages send by a user other than the current user display the user's name if it starts a sequence. Messages sent within a certain time frame are closer and displayed differently if they start or end a message sequence
+
+Mobile list :
+
+![](./sketches/conv-mobile.png)
+
