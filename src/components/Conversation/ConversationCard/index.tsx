@@ -17,7 +17,6 @@ const ConversationCard: FC<ConversationCardProps> = ({ id , senderId, recipientN
  
 
   const handleClick = (e) => {
-    e.preventDefault()
     router.replace(`${router.basePath}/message/${id}`)
   }
 //  display the name of the other user 

@@ -157,7 +157,7 @@ describe("ConversationContainer", () => {
 
 
         it('renders the expected conversations', () => {
-            expect(screen.getByText(/Vous n'avez pas de messages/)).toBeInTheDocument();
+            expect(screen.getByTestId("conversation-conversation-list-container")).toBeInTheDocument();
 
         });
     })

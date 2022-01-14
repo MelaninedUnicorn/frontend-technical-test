@@ -19,22 +19,18 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
   const handleChange = (e) => {
     setMessage(e.target.value)
   }
-
   const handleSendMessage = async (e) => {
     const params = {
       body: message,
       timestamp: Math.floor(new Date().getTime() / 1000)
     };
 
-
     const options = {
       method: 'POST',
       body: JSON.stringify(params)
     };
    
-    const response = await sendMessage(conversationId,options);
-
-    console.log(response)
+    await sendMessage(conversationId,options);
   } 
 
   return <FormControl data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
