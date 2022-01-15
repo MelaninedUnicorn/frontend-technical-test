@@ -14,30 +14,30 @@ import { fetchAndValidate } from '../../../api/fetch'
 
 
 
-const MessageList: FC<MessageListProps> = ({ messages = [] , currentUserId }) => {
-    
+const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => {
+
     const { data: users } = useSWR(
         getUsers(),
         fetchAndValidate)
 
 
- 
+
 
     const renderMessages = () => {
 
 
         let i = 0;
-        let messageCount = messages.length;
-        let tempMessages = [];
+        const messageCount = messages.length;
+        const tempMessages = [];
 
         while (i < messageCount) {
-            let previous = messages[i - 1];
-            let current = messages[i];
-            let next = messages[i + 1];
-            let isMine = current.authorId === currentUserId;
-            const senderInfo = users ? users.find(user => user.id === current.authorId): {nickname: ""};
+            const previous = messages[i - 1];
+            const current = messages[i];
+            const next = messages[i + 1];
+            const isMine = current.authorId === currentUserId;
+            const senderInfo = users ? users.find(user => user.id === current.authorId) : { nickname: "" };
 
-            let currMoment = moment(current.timestamp * 1000);
+            const currMoment = moment(current.timestamp * 1000);
             let prevBySameAuthor = false;
             let nextBySameAuthor = false;
             let startsSequence = true;
@@ -46,8 +46,8 @@ const MessageList: FC<MessageListProps> = ({ messages = [] , currentUserId }) =>
 
             if (previous) {
 
-                let prevMoment = moment(previous.timestamp * 1000);
-                let previousDuration = moment.duration(currMoment.diff(prevMoment));
+                const prevMoment = moment(previous.timestamp * 1000);
+                const previousDuration = moment.duration(currMoment.diff(prevMoment));
                 prevBySameAuthor = previous.id === current.authorId;
 
                 if (prevBySameAuthor && previousDuration.as('hours') < 1) {
@@ -60,8 +60,8 @@ const MessageList: FC<MessageListProps> = ({ messages = [] , currentUserId }) =>
             }
 
             if (next) {
-                let nextMoment = moment(next.timestamp * 1000);
-                let nextDuration = moment.duration(nextMoment.diff(currMoment));
+                const nextMoment = moment(next.timestamp * 1000);
+                const nextDuration = moment.duration(nextMoment.diff(currMoment));
                 nextBySameAuthor = next.id === current.authorId;
 
                 if (nextBySameAuthor && nextDuration.as('hours') < 1) {
@@ -89,11 +89,11 @@ const MessageList: FC<MessageListProps> = ({ messages = [] , currentUserId }) =>
     }
 
     return (
-  
-        <Box data-testid="message-list" className={styles["message-list-container"]}  sx={{ bgcolor: 'background.paper' }}>
+
+        <Box data-testid="message-list" className={styles["message-list-container"]} sx={{ bgcolor: 'background.paper' }}>
             {messages.length > 0 ? renderMessages() : null}
         </Box>
-      
+
     )
 }
 
