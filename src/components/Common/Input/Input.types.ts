@@ -1,2 +1,2 @@
-import { InputProps as MuiInputProps } from '@mui/material/Input'
+import { OutlinedInputProps as MuiInputProps } from '@mui/material/OutlinedInput'
 export interface InputProps extends MuiInputProps {}

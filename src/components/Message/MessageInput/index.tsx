@@ -14,12 +14,15 @@ import { sendMessage } from '../../../api/messages';
 const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
 
   const [message, setMessage] = useState('');
-
-
+  const [error, setError] = useState(null);
+  
   const handleChange = (e) => {
+    console.log("handle change");
     setMessage(e.target.value)
+    setError(null);
   }
   const handleSendMessage = async (e) => {
+    console.log("handle send message");
     const params = {
       body: message,
       timestamp: Math.floor(new Date().getTime() / 1000)
@@ -29,24 +32,34 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
       method: 'POST',
       body: JSON.stringify(params)
     };
-   
-    await sendMessage(conversationId,options);
-  } 
 
-  return <FormControl data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
+    if (message === "") {
+      setError("Veuillez composer un message")
+    } else {
+      sendMessage(conversationId, options).then(() => setMessage('')).catch(e => setError(e.message));
+
+    }
+
+  }
+  const hasError = error ? true : false
+
+  return <FormControl onSubmit={handleSendMessage} data-testid={"message-input"} className={`${styles["message-input-container"]}`} fullWidth sx={{ m: 1 }} variant="standard">
     <Input
-      data-testid="message-input-field"
       type={'text'}
+      inputProps={{ "data-testid": "message-input-field" }}
       value={message}
       onChange={handleChange}
-
+      error={hasError}
+      minRows={2}
+      multiline
       endAdornment={
         <InputAdornment position="end">
           <IconButton
-          data-testidd='message-input-send-button'
+            data-testid='message-input-send-button'
+            type='submit'
             aria-label="send-message-button"
+            color={hasError ? 'error' : "default"}
             onClick={handleSendMessage}
-
           >
             <Send />
           </IconButton>
