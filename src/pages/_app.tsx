@@ -6,7 +6,7 @@ import '../styles/globals.css'
 export const loggedUserId = getLoggedUserId()
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component   {...pageProps} />
+    return <Component   {...pageProps} />
 }
 
 export default MyApp

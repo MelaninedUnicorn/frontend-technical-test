@@ -1,7 +1,7 @@
 import * as t from "io-ts"
 
 export const MessageContainerValidator  = t.type({
-  conversationId: t.number,
+    "conversationId": t.number,
   
 })
 

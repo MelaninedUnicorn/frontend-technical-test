@@ -95,7 +95,7 @@ const server = setupServer(
             return res(
                 ctx.delay(100),
                 ctx.status(500),
-                ctx.json({ message: 'The message is undefined' })
+                ctx.json({ "message": 'The message is undefined' })
             );
         }
     )
@@ -128,7 +128,6 @@ describe("MessageContainer", () => {
             expect(screen.getByText(/Bonjour c'est le second message de la première conversation/)).toBeInTheDocument();
             expect(screen.getByText(/Bonjour c'est le troisième message de la première conversation/)).toBeInTheDocument();
 
-
         });
     })
     describe('when conversation id is 2', () => {
@@ -157,12 +156,10 @@ describe("MessageContainer", () => {
             await waitForElementToBeRemoved(() => screen.getByTestId("spinner"));
         });
 
-
         it('renders the message container', () => {
             expect(screen.getByTestId("message-container")).toBeInTheDocument();
 
         });
     })
-
 
 }) 

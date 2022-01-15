@@ -1,9 +1,8 @@
 import { ConversationValidator } from '../../../types/conversation'
 import * as t from "io-ts"
 
-
 export const ConversationListValidator = t.type({
-    conversations: t.array(ConversationValidator)
+    "conversations": t.array(ConversationValidator)
 
 })
 

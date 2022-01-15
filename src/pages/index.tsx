@@ -4,13 +4,9 @@ import ConversationContainer from '../components/Conversation/ConversationContai
 
 import { loggedUserId } from './_app';
 
-
-
 const Home: FC = () => {
 
-
-
-  return <div data-testid={"index"}><ConversationContainer  userId={loggedUserId} /></div>
+    return <div data-testid={"index"}><ConversationContainer  userId={loggedUserId} /></div>
 
 }
 

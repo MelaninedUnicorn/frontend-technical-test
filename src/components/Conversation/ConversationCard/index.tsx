@@ -11,32 +11,31 @@ import { useRouter } from 'next/router'
 import { ConversationCardProps } from './ConversationCard.types'
 import { loggedUserId } from '../../../pages/_app'
 
-const ConversationCard: FC<ConversationCardProps> = ({ id , senderId, recipientNickname,senderNickname , lastMessageTimestamp = 0 }) => {
-  const router = useRouter()
+const ConversationCard: FC<ConversationCardProps> = ({ id, senderId, recipientNickname, senderNickname, lastMessageTimestamp = 0 }) => {
 
- 
+    const router = useRouter()
 
-  const handleClick = (e) => {
-    router.replace(`${router.basePath}/message/${id}`)
-  }
-//  display the name of the other user 
-  const name = loggedUserId === senderId ?  recipientNickname : senderNickname ;
+    const handleClick = () => {
+        router.replace(`${router.basePath}/message/${id}`)
+    }
+    //  display the name of the other user 
+    const name = loggedUserId === senderId ? recipientNickname : senderNickname;
 
-  return (id ?
-    <ListItem data-testid="conversation-card" disablePadding>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <Avatar
-            sx={{ bgcolor: "#EC6E37" }}
-            alt={name}
-          >
-            {getInitials(name)}
-          </Avatar>
-        </ListItemIcon>
-        <ListItemText primary={name} secondary={`Dernier message : ${timeago(lastMessageTimestamp * 1000)}`} />
-      </ListItemButton>
-    </ListItem>
-  :'')
+    return (id ?
+        <ListItem data-testid="conversation-card" onClick={handleClick} disablePadding>
+            <ListItemButton >
+                <ListItemIcon>
+                    <Avatar
+                        sx={{ "bgcolor": "#EC6E37" }}
+                        alt={name}
+                    >
+                        {getInitials(name)}
+                    </Avatar>
+                </ListItemIcon>
+                <ListItemText primary={name} secondary={`Dernier message : ${timeago(lastMessageTimestamp * 1000)}`} />
+            </ListItemButton>
+        </ListItem>
+        : null)
 }
 
 export default ConversationCard

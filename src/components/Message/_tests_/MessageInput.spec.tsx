@@ -1,6 +1,5 @@
 import { fireEvent, getByTestId, render, screen } from "@testing-library/react"
 import React from "react"
-import { shallow } from 'enzyme';
 
 import MessageInput from "../MessageInput"
 
@@ -11,7 +10,7 @@ describe("MessageInput", () => {
         render(<MessageInput conversationId={1}/>)
         const messageInput = screen.getByTestId( "message-input-field")
         
-        fireEvent.change(messageInput , {target: {value: 'My test message'}})
+        fireEvent.change(messageInput , {"target": {"value": 'My test message'}})
         expect(messageInput).toHaveValue("My test message")
         expect(logSpy).toBeCalledWith('handle change');
     })
@@ -25,9 +24,5 @@ describe("MessageInput", () => {
         expect(logSpy).toBeCalledWith('handle send message');
 
     })
-    
-   
-
-
    
 }) 

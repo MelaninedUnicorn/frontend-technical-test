@@ -1,10 +1,7 @@
 import moment from 'moment'
 import type { FC } from 'react'
 
-
-
 import Box from '../../Common/Box'
-import Grid from '@mui/material/Grid'
 import MessageCard from '../MessageCard'
 import { MessageListProps } from './MessageList.types'
 import styles from '../../../styles/MessageList.module.css'
@@ -12,19 +9,13 @@ import useSWR from 'swr'
 import { getUsers } from '../../../api/users'
 import { fetchAndValidate } from '../../../api/fetch'
 
-
-
 const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => {
 
-    const { data: users } = useSWR(
+    const { "data": users } = useSWR(
         getUsers(),
         fetchAndValidate)
 
-
-
-
     const renderMessages = () => {
-
 
         let i = 0;
         const messageCount = messages.length;
@@ -35,7 +26,7 @@ const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => 
             const current = messages[i];
             const next = messages[i + 1];
             const isMine = current.authorId === currentUserId;
-            const senderInfo = users ? users.find(user => user.id === current.authorId) : { nickname: "" };
+            const senderInfo = users ? users.find(user => user.id === current.authorId) : { "nickname": "" };
 
             const currMoment = moment(current.timestamp * 1000);
             let prevBySameAuthor = false;
@@ -90,7 +81,7 @@ const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => 
 
     return (
 
-        <Box data-testid="message-list" className={styles["message-list-container"]} sx={{ bgcolor: 'background.paper' }}>
+        <Box data-testid="message-list" className={styles["message-list-container"]} sx={{ "bgcolor": 'background.paper' }}>
             {messages.length > 0 ? renderMessages() : null}
         </Box>
 

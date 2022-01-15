@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import Button from "../../../components/Common/Button"
 
 describe("Button", () => {
@@ -7,5 +7,5 @@ describe("Button", () => {
         expect(screen.getByTestId('button')).toBeInTheDocument()
         expect(screen.getByText('abc')).toBeInTheDocument()
     })
-   
+
 })

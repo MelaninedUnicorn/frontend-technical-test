@@ -99,7 +99,7 @@ const server = setupServer(
             return res(
                 ctx.delay(100),
                 ctx.status(500),
-                ctx.json({ message: 'The conversation is undefined' })
+                ctx.json({ "message": 'The conversation is undefined' })
             );
         }
     )
@@ -155,18 +155,10 @@ describe("ConversationContainer", () => {
             await waitForElementToBeRemoved(() => screen.getByTestId("spinner"));
         });
 
-
         it('renders the expected conversations', () => {
             expect(screen.getByTestId("conversation-conversation-list-container")).toBeInTheDocument();
 
         });
     })
-
-
-
-
-
-
-
 
 }) 

@@ -12,5 +12,5 @@ describe("IconButton", () => {
         render(<IconButton onClick={handleClick}/>)
         fireEvent.click(screen.getByTestId('icon-button'))
         expect(handleClick).toHaveBeenCalledTimes(1)
-      })
+    })
 }) 

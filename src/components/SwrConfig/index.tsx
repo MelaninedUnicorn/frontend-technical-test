@@ -5,7 +5,7 @@ import { Fetcher, PublicConfiguration } from 'swr/dist/types';
 import { render, RenderOptions } from "@testing-library/react"
 import { FC, ReactElement } from "react"
 
-type Provider = { provider?: (cache: Readonly<Cache<any>>) => Cache<any> };
+type Provider = { provider?: () => Cache<any> };
 
 /**
  * custom SWR component for testing
@@ -20,7 +20,7 @@ export function SwrConfig({
     swrConfig?: Partial<PublicConfiguration<any, any, Fetcher<any>>> & Provider;
 }) {
     return (
-        <SWRConfig  value={{ fetcher: customFetcher, ...swrConfig }}>
+        <SWRConfig value={{ "fetcher": customFetcher, ...swrConfig }}>
             {children}
         </SWRConfig>
     );
@@ -28,7 +28,7 @@ export function SwrConfig({
 
 const AllTheProviders: FC<any> = ({ children }) => {
     return (
-        <SwrConfig data-testid={"swr-config"} swrConfig={{ dedupingInterval: 0, provider: () => new Map() }}>
+        <SwrConfig data-testid={"swr-config"} swrConfig={{ "dedupingInterval": 0, "provider": () => new Map() }}>
             {children}
         </SwrConfig>
     );
@@ -45,12 +45,8 @@ export async function customFetcher(url: string) {
 
     return res.json();
 }
-export const customRender = async (
+export const customRender = (
     ui: ReactElement,
     options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: AllTheProviders, ...options });
-
-
-
-
+) => render(ui, { "wrapper": AllTheProviders, ...options });
 
