@@ -30,17 +30,17 @@ moment.locale('fr', {
   relativeTime : {
       future : 'dans %s',
       past : '%s',
-      s : 'quelques secondes',
-      m : 'une minute',
-      mm : '%d minutes',
-      h : 'une heure',
-      hh : '%d heures',
-      d : 'un jour',
-      dd : '%d jours',
-      M : 'un mois',
-      MM : '%d mois',
-      y : 'un an',
-      yy : '%d ans'
+      s : 'il y a quelques secondes',
+      m : 'il y a une minute',
+      mm : 'il y a %d minutes',
+      h : 'il y a une heure',
+      hh : 'il y a %d heures',
+      d : 'il y a un jour',
+      dd : 'il y a %d jours',
+      M : 'il y a un mois',
+      MM : 'il y a %d mois',
+      y : 'il y a un an',
+      yy : 'il y a %d ans'
   },
   dayOfMonthOrdinalParse : /\d{1,2}(er|e)/,
   ordinal : function (number) {

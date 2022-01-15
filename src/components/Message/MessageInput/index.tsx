@@ -15,7 +15,7 @@ const MessageInput: FC<MessageInputProps> = ({ conversationId }) => {
 
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
-  
+
   const handleChange = (e) => {
     console.log("handle change");
     setMessage(e.target.value)
