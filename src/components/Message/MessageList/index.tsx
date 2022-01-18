@@ -9,7 +9,7 @@ import useSWR from 'swr'
 import { getUsers } from '../../../api/users'
 import { fetchAndValidate } from '../../../api/fetch'
 
-const MessageList: FC<MessageListProps> = ({ messages = [], currentUserId }) => {
+const MessageList: FC<MessageListProps> = ({ messages= [], currentUserId }) => {
 
     const { "data": users } = useSWR(
         getUsers(),

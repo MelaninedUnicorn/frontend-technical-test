@@ -3,7 +3,7 @@ import { timeago, monthDayYear, monthDayYearAtTime } from '../dates'
 describe('DatesUtils', () => {
     const timestamp = new Date(1572840117245).getTime();
   it('should return  how long ago since now in french in a frendlier format', () => {
-    const expected = "2 ans"
+    const expected = "il y a 2 ans"
 
     expect(timeago(timestamp)).toEqual(expected)
   })
