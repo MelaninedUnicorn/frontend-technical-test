@@ -5,9 +5,8 @@ export const fetchAndValidate = async (url: string): Promise<any> => {
     if (!response.ok) {
         throw new Error(data.message);
     }
-    
   
-     return data;
+    return data;
    
 }
 

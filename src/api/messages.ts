@@ -10,7 +10,6 @@ export const sendMessage = async (id:number ,options:object) => {
     if (!response.ok) {
         throw new Error(data.message);
     }
-   
   
     return data
 }
